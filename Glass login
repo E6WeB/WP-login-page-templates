@@ -1,0 +1,106 @@
+function wsv_password_protected_logo() { 
+		?> 
+		<style type="text/css"> 
+	
+body.login {
+    background-image: url("https://mybackground.com/bg.jpg"); //Put your background URL here	
+	background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;	
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    }
+body.login div#login h1 a {
+	background-image: url(https://mylogo.com/logo.png); //Your logo URL image here
+	margin: 0 auto;
+	width:100%;
+	background-size: 320px;
+	}
+#login {
+    width: 320px;
+    padding: 0!important;
+    margin: auto;
+}		
+.login form {	
+	background: rgb(255,255,255,.05)!important;	
+	border-radius: 10px!important;
+    backdrop-filter: blur(5px)!important;
+    border: 2px solid rgba(255,255,255,0.1)!important;
+    box-shadow: 0 0 40px rgba(8,7,16,0.6)!important;
+	}
+					
+.login form *{
+    color: #ffffff;
+    }
+.login #backtoblog, .login #nav
+	{
+	display:none;
+	}
+.wp-core-ui .button-primary {
+	background: #26221F!important;
+    border-color: #AEABA6!important;
+    color: #AEABA6!important;
+    text-decoration: none;
+    text-shadow: none;
+    }
+.wp-core-ui .button-primary:hover {
+    background:rgb(255,255,255,.1)!important;
+    border-color: #AEABA6!important;
+    color: #AEABA6!important;
+    text-decoration: none;
+    text-shadow: none;
+    }
+
+::placeholder{
+    color: #e5e5e5;
+    }		
+			
+.login .button.wp-hide-pw .dashicons {
+    color:#333!important;
+}		
+.login form .input, .login form input[type=checkbox], .login input[type=text] {
+    background: #d6d6d621!important;
+	color:#f1f1f1!important;
+	border: 1px solid rgba(255,255,255,0.1)!important;
+}	
+		
+.login label{
+    display: block;
+    margin-top: 30px;
+    font-size: 16px;
+    font-weight: 500;
+    }	
+
+.login #login_error, .login .message, .login .success {
+    border-left: 4px solid rgb(255,255,255,.2)!important; 
+    padding: 12px!important;
+	text-align:center!important;
+    margin-left: 0;
+    margin-bottom: 20px;
+    background: rgb(255,255,255,.2)!important;
+	color:#FEFFFD!important;
+    border: 2px solid rgba(255,255,255,0.1)!important;
+    box-shadow: 0 0 20px rgba(8,7,16,0.6)!important;
+	border-radius: 10px!important;	
+    }	
+.login .wp-cancel-pw>.dashicons, .wp-hide-pw>.dashicons {
+    color: #2B3489;		
+	}		
+	
+		</style>
+		<?php 
+} 
+add_action( 'login_enqueue_scripts', 'wsv_password_protected_logo' );
+		
+	function wsv_password_protected_message() {    
+		echo '<h2>Password Required for Access</h2>';		
+}
+add_action( 'password_protected_login_message', 'wsv_password_protected_message' );
+
+function put_my_url(){
+return "http://mywebsite.com/"; // your URL here
+}
+
+add_filter('login_headerurl', 'put_my_url');
+
